@@ -2,37 +2,37 @@ import re
 
 regex_email = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$' # Any custom email id possible. Must contain '@' and "." 
 regex_name = '[A-Za-z]{2,25}' #\s[A-Za-z]{2,25}  Add for space between names
-regex_password = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!#%*?&.]{4,20}$'
+regex_password = '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,}$'
 
 def check_mail(email):  
   
     # pass the regular expression 
     # and the string in search() method 
     if(re.search(regex_email,email)):  
-        print("Valid Email")  
+        return True 
           
     else:  
-        print("Invalid Email")
+        return False
 
 def check_name(name):  
   
     # pass the regular expression 
     # and the string in search() method 
     if(re.search(regex_name,name)):  
-        print("Valid Name")  
+        return True
           
     else:  
-        print("Invalid Name")
+        return False
 
 def check_pass(password):  
   
     # pass the regular expression 
     # and the string in search() method 
-    if(re.search(regex_password,password)):  
-        print("Valid Password")  
+    if(re.search(regex_password,password)):
+        return True 
           
     else:  
-        print("Invalid Password")
+        return False
 
 if __name__ == '__main__' :  
       
