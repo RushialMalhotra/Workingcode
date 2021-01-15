@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, make_response
 
 
 def json_response(message, code, data={}):
@@ -7,7 +7,7 @@ def json_response(message, code, data={}):
     if code == 200:
         ok = True
 
-    response = jsonify({'success': ok, 'message': message, 'data': data}), code
+    response = make_response(jsonify({'success': ok, 'message': message, 'data': data}), code)
     return response
 
 

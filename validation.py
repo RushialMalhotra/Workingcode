@@ -33,15 +33,4 @@ def check_pass(password):
           
     else:  
         return False
-
-if __name__ == '__main__' :  
       
-    # Enter the details 
-    name = "rushial" 
-    email = "ankitrai326@gmail.com" 
-    password = "Rush22"
-      
-    # calling run function  
-    check_mail(email) 
-    check_name(name) 
-    check_pass(password) 
