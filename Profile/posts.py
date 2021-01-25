@@ -1,9 +1,18 @@
-@app.route('/post', methods=['POST','GET'])
-@jwt_required
-def post():
+from flask_restful import Resource
+from flask import request, jsonify
+from login import auth
+from response import json_response, bad_request
+
+
+@auth
+class Posts(Resource) :
+def post(self):
+     """function to 
+            Args:
+                content:
+                title:
+    """
     try:
-        
-    
         if request.method == 'POST':
             _json = request.get_json()
             content = _json['content'] 

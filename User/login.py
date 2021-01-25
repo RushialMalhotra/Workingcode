@@ -3,7 +3,7 @@ from flask import request, jsonify
 
 
 class login(Resource) :
-def login(self):
+def auth():
      """function to login into vendor assessor assessment in which token expires in 4 days
             Args:
                 user_name:

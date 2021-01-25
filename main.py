@@ -28,7 +28,6 @@ app.config['JWT_COOKIE_CSRF_PROTECT']= False
 app.config['JWT_SECRET_KEY']  = 'jwt-supersecret'
 jwt = JWTManager(app)
 app.secret_key = "secretkey"
-# app.config['MONGO_URI'] = "mongodb://localhost:27017/Users"
 cluster = MongoClient("mongodb://localhost:27017/Users")
 db = cluster['Users']
 collection_user = db['users']
