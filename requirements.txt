@@ -5,6 +5,7 @@ bandit==1.7.0
 bcrypt==3.2.0
 certifi==2020.12.5
 cffi==1.14.4
+chardet==4.0.0
 click==7.1.2
 distlib==0.3.1
 filelock==3.0.12
@@ -14,6 +15,7 @@ Flask-PyMongo==2.3.0
 Flask-RESTful==0.3.8
 gitdb==4.0.5
 GitPython==3.1.11
+idna==2.10
 importlib-metadata==3.3.0
 importlib-resources==5.0.0
 isort==5.7.0
@@ -22,6 +24,8 @@ Jinja2==2.11.2
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
+numpy==1.18.5
+pandas==0.24.2
 passlib==1.7.4
 pbr==5.5.1
 pipenv==2020.11.15
@@ -30,17 +34,20 @@ pycparser==2.20
 PyJWT==1.7.1
 pylint==2.6.0
 pymongo==3.11.2
+python-dateutil==2.8.1
 pytz==2020.5
 PyYAML==5.3.1
+requests==2.25.1
 six==1.15.0
 smmap==3.0.4
 stevedore==3.3.0
 toml==0.10.2
 typed-ast==1.4.2
 typing-extensions==3.7.4.3
+urllib3==1.26.3
 virtualenv==20.3.0
 virtualenv-clone==0.5.4
 Werkzeug==1.0.1
 wrapt==1.12.1
+xlrd==1.2.0
 zipp==3.4.0
-flask_restful==0.3.8
