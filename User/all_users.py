@@ -7,11 +7,9 @@ class All_users(Resource):
     def __init__(self, **kwargs):
         self.collection_user = kwargs['collection_user']
         
-    def get():
-        
-
+    def get(self, collection_user):
         try:
-            all_users = collection_users.find({},projection={"_id": False})
-            return json_response('All users fetched successfully',200, {'all_users': [all_users for users in users]}
+            posts = collection_user.find({},projection={"_id": False})
+            return json_response('All users fetched successfully',200, {'posts': [post for post in posts]})
         except Exception as e:  
-            return bad_request(str(e))
+            return json_response('Method not allowed',400)

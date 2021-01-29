@@ -20,30 +20,27 @@ class Register(Resource) :
 
     def post(self, *args, **kwargs):
         try:
-             body = request.get_json(force=True)
+            body = request.get_json(force=True)
 
-             name = body['name']
-             email = body['email']
-             password = body['password']
+            name = body['name']
+            email = body['email']
+            password = body['password']
             
-             if not check_mail(email):
-                 return json_response('Invalid email format',300)
-             if not check_name(name):
-                 return json_response('Invalid name format',300)
-             if not check_pass(password):
-                 return json_response('Invalid password format',300)
+            if not check_mail(email):
+                return json_response('Invalid email format',300)
+            if not check_name(name):
+                return json_response('Invalid name format',300)
+            if not check_pass(password):
+                return json_response('Invalid password format',300)
             
+            check_user_exists = collection_user.find_one({"email": email})
+            if check_user_exists:
+                return json_response('User already exists',300)
+                hashed_password = generate_password_hash(password)
            
-             check_user_exists = collection_user.find_one({"email": email})
-             print("hello",check_user_exists)
-        
-             if True:
-                 return json_response('User already exists',300)
-                 hashed_password = generate_password_hash(password)
-        
-             if collection_user.insert({'email': email, 'pass': hashed_password, 'name': name,'user_id': str(uuid.uuid4())}):
-                  return json_response('User created successfully',200, {'name': name})
+            if collection_user.insert({'email': email, 'pwd': hashed_password, 'name': name,'user_id': str(uuid.uuid4())}):
+                return json_response('User created successfully',200, {'name': name})
 
 
-        except Exception as e:
-             return json_response('User already exists',300)
+        except:
+            return json_response('User is existing already',300)
