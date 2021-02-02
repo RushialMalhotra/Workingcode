@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 from flask import jsonify, request
 from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
+import uuid
 from Authorization.response import json_response, bad_request
 from flask_restful import Api
 from flask_jwt_extended import (JWTManager, create_access_token, create_refresh_token,
@@ -26,21 +27,24 @@ class Register(Resource) :
             email = body['email']
             password = body['password']
             
+            if not check_name(name):
+                    return json_response('Invalid name format',300)
+
             if not check_mail(email):
                 return json_response('Invalid email format',300)
-            if not check_name(name):
-                return json_response('Invalid name format',300)
+          
             if not check_pass(password):
                 return json_response('Invalid password format',300)
             
-            check_user_exists = collection_user.find_one({"email": email})
+            check_user_exists = self.collection_user.find_one({'email': email})
+            
             if check_user_exists:
                 return json_response('User already exists',300)
-                hashed_password = generate_password_hash(password)
+            hashed_password = generate_password_hash(password)
            
-            if collection_user.insert({'email': email, 'pwd': hashed_password, 'name': name,'user_id': str(uuid.uuid4())}):
+            if self.collection_user.insert({'name': name, 'email': email, 'password': hashed_password, 'user_id': str(uuid.uuid4())}):
                 return json_response('User created successfully',200, {'name': name})
 
 
-        except:
-            return json_response('User is existing already',300)
+        except Exception as e:
+            return bad_request(str(e))

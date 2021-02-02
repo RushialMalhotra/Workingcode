@@ -16,7 +16,7 @@ class Login(Resource) :
                 email = body['email']
                 password = body['password']
 
-                user_db = collection.find_one({"email": email})
+                user_db = collection_user.find_one({"email": email})
                 if not user_db:
                     return json_response('User does not exists',300)
             

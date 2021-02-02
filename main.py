@@ -14,7 +14,6 @@ from flask_restful import Api
 from flask_jwt_extended import (JWTManager, create_access_token, create_refresh_token,
                                 jwt_required, jwt_refresh_token_required, get_jwt_identity, set_access_cookies,
                                 set_refresh_cookies)
-import uuid
 from Authorization.validation import check_mail,check_name,check_pass
 
  
@@ -39,7 +38,7 @@ api_helper.add_resource(Register, "/register", resource_class_kwargs={'collectio
 
 api_helper.add_resource(Login, "/login", resource_class_kwargs={'collection_user': collection_user})
 
-api_helper.add_resource(Posts, "/post", resource_class_kwargs={'collection_user': collection_posts})
+api_helper.add_resource(Posts, "/post", resource_class_kwargs={'collection_posts': collection_posts})
 
 api_helper.add_resource(All_users, "/user", resource_class_kwargs={'collection_user': collection_user})
 
